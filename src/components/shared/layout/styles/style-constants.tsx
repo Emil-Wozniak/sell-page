@@ -4,7 +4,7 @@ export const HEADER_CONTAINER = "bg-blue-500 w-full flex flex-col sticky top-0 p
 export const HEADER_TEXT="text-center text-orange-500 font-bold";
 
 /* INPUT */
-export const BODY_CONTENT ="bg-orange-500 min-h-screen flex flex-col items-center justify-center text-white p-4";
+export const BODY_CONTENT ="bg-orange-500 min-h-screen flex flex-col items-center justify-center text-white p-4 py-40";
 export const SEARCH_INPUT = "text-gray-500 rounded m-4 py-4 px-6 hover:shadow hover:bg-blue-600";
 
 export const FORM_LOGIN = "bg-white shadow-md rounded px-8 py-8 pt-8";
