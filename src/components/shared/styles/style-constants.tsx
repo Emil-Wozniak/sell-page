@@ -1,5 +1,5 @@
 /* LAYOUT */
-export const APP_CONTAINER = "m-auto antialiased font-sans font-serif font-mono text-center";
+export const APP_CONTAINER = "m-auto antialiased font-sans font-serif font-mono text-center p-20 mt-8";
 export const HEADER_CONTAINER = "bg-blue-500 w-full flex flex-col sticky top-0 pt-12";
 export const HEADER_TEXT="text-center text-orange-500 font-bold";
 
@@ -23,3 +23,7 @@ export const ORANGE_LIST = "hover:text-orange-500 text-gray-500";
 export const BLUE_LIST = "hover:text-blue-500 text-gray-500";
 export const DARK_GREEN_LIST = "hover:text-green-900 text-gray-500";
 export const LIGHT_GREEN_LIST = "hover:text-green-300 text-gray-500";
+
+export const button= {
+    blue: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+};

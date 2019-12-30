@@ -1,6 +1,6 @@
 import React from "react";
 import {ColumnElement, ColumnSection} from "../grid/grid.components";
-import {BLUE_LIST, DARK_GREEN_LIST, ORANGE_LIST} from "../styles/style-constants";
+import {BLUE_LIST, DARK_GREEN_LIST, ORANGE_LIST} from "../../styles/style-constants";
 
 interface IFooter {
     title: string;

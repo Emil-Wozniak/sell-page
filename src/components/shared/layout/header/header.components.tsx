@@ -1,5 +1,6 @@
 import React from "react";
 import "./header.css";
+import {Link} from "react-router-dom";
 
 export const Logo = () => <div className="relative block p-4 lg:p-6 text-xl text-blue-600 font-bold">Logo</div>;
 
@@ -13,41 +14,51 @@ type HoverableSegment = {
     image: string
     heading: string;
     paragraph: string;
+    route?: string;
 }
-export const HoverableSegment = (props: HoverableSegment) =>
+export const HoverableSegment = ({image, heading, paragraph, route}: HoverableSegment) =>
     <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
         <div className="flex items-center">
-            <svg className="h-8 mb-3 mr-3 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d={props.image}/>
+            <svg className="h-8 mb-3 mr-3 fill-current text-white" xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 20 20">
+                <path d={image}/>
             </svg>
-            <h3 className="font-bold text-xl text-white text-bold mb-2">{props.heading}</h3>
+            <h3 className="font-bold text-xl text-white text-bold mb-2">{heading}</h3>
         </div>
-        <p className="text-gray-100 text-sm">{props.paragraph}</p>
+        <p className="text-gray-100 text-sm">{paragraph}</p>
         <div className="flex items-center py-3">
             <svg className="h-6 pr-3 fill-current text-blue-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z"/>
+                <path
+                    d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z"/>
             </svg>
-            <a href="#" className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">Find out more...</a>
+            <a href={route !== undefined ? `${route}` : '#'}
+               className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">Find out more...</a>
         </div>
     </ul>;
 
 
-type Hoverable = {
+export type HoverableType = {
     title: string
     background?: string;
-    children: any;
+    children?: any;
+    route: string;
+    amount: number;
 }
-export const Hoverable = (props: Hoverable) =>
-    <li className={`hoverable hover:${props.background} hover:text-white`}>
-        <a href="#" className={`relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold hover:${props.background} hover:text-white`}>
-            {props.title}
-        </a>
-        <div className={`p-6 mega-menu mb-16 sm:mb-0 shadow-xl ${props.background}`}>
-            <div className="container mx-auto w-full flex flex-wrap justify-between mx-2">
-                <HoverableTitle/>
-                {props.children}
+export const Hoverable = ({title, background, children, route, amount}: HoverableType) =>
+    <li className={`hoverable hover:${background} hover:text-white`}>
+        <Link
+            to={route}
+            className={`relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold hover:${background} hover:text-white`}>
+            {title.toUpperCase()}
+        </Link>
+        {amount !== 0 ?
+            <div className={`p-6 mega-menu mb-16 sm:mb-0 shadow-xl ${background}`}>
+                <div className="container mx-auto w-full flex flex-wrap justify-between mx-2">
+                    <HoverableTitle/>
+                    {children}
+                </div>
             </div>
-        </div>
+            : null}
     </li>;
 
 type Example = {
@@ -74,6 +85,8 @@ export const Example = (props: Example) => {
         heading={"Heading 4"}
         paragraph={"This is a no-brainer to wash your face, or we need to future-proof this high performance keywords granularity."}/>;
     switch (props.amount) {
+        case 0:
+            return <div/>;
         case 1:
             return <>{one}</>;
         case 2:
