@@ -25,10 +25,10 @@
 }
 
 
-
 /* #hoverable Class Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .hoverable {
+    z-index: 10;
     position: static;
 }
 
@@ -59,6 +59,7 @@
 .toggle-input {
     display: none;
 }
+
 .toggle-input:not(checked) ~ .mega-menu {
     display: none;
 }
